@@ -1,0 +1,10 @@
+[project]
+name = "smithay.github.io"
+version = "1.0.0"
+dependencies = [
+	"pelican",
+	"markdown",
+]
+
+[tool.setuptools]
+packages = []
