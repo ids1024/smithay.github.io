@@ -10,11 +10,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           submodules: recursive
-      - name: Pelican publish
-        uses: nelsonjchen/gh-pages-pelican-action@0.1.10
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-          GH_PAGES_BRANCH: master
+      - name: Install deps
+        run: pip install -e .
+      - name: Build pelican site
+        run: pelican content -o output -s pelicanconf.py
+      - name: Upload static files as artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: output/
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
+
+permissions:
+  pages: write
+  id-token: write
