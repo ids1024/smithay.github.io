@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
-AUTHOR = 'Victor Berger'
+AUTHOR = 'Elinor Berger'
 SITENAME = 'Smithay project'
 SITEURL = ''
 

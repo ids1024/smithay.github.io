@@ -2,7 +2,7 @@ Title: Version 0.1 of Smithay
 Date: 2017-10-05 17:00
 Category: Releases
 Slug: smithay-v-0-1
-Authors: Victor Berger
+Authors: Elinor Berger
 Summary: Announcement of version 0.1 of smithay, and a general presentation of the project and its goals.
 
 A few days ago we released version 0.1 of the [smithay crate](https://crates.io/crates/smithay),

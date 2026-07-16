@@ -2,7 +2,7 @@ Title: Version 0.7 of calloop
 Date: 2020-10-13 19:00
 Category: Releases
 Slug: calloop-v-0-7
-Authors: Victor Berger
+Authors: Elinor Berger
 Summary: Announcement of version 0.7 of calloop, and a presentation of the crate.
 
 We just released [version 0.7] of [calloop], the callback-based event loop that backs [Smithay]

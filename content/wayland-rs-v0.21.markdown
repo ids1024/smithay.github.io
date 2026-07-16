@@ -2,7 +2,7 @@ Title: Wayland-rs 0.21: Pure rust implementation
 Date: 2018-07-18 22:00
 Category: Releases
 Slug: wayland-rs-v-0-21
-Authors: Victor Berger
+Authors: Elinor Berger
 Summary: Announcement of v0.21 of wayland-rs, featuring a pure rust implementation of the wayland protocol.
 
 > [wayland-rs](https://github.com/Smithay/wayland-rs) is a set of crates providing generic APIs to

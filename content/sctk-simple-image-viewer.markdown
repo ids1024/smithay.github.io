@@ -2,7 +2,7 @@ Title: An image viewer using Smithay's Client Toolkit
 Date: 2018-05-10 14:00
 Category: Tutorials
 Slug: sctk-image-viewer
-Authors: Victor Berger
+Authors: Elinor Berger
 Summary: Small tutorial of using Smithay's Client Toolkit by example, building a small image viewer as a Wayland client.
 
 Following [the previous announce of Smithay's Client Toolkit](/wayland-rs-v-0-20.html), this

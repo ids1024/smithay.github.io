@@ -2,7 +2,7 @@ Title: Wayland-rs 0.20 & Smithay's Client Toolkit
 Date: 2018-04-26 18:00
 Category: Releases
 Slug: wayland-rs-v-0-20
-Authors: Victor Berger
+Authors: Elinor Berger
 Summary: Status point of the project: large rework of the wayland bindings in version 0.20, and announcement of Smithay's Client Toolkit.
 
 This article marks the end of a large rework of the

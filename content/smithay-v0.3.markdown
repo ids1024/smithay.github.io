@@ -2,7 +2,7 @@ Title: Version 0.3 of Smithay
 Date: 2021-07-24 21:00
 Category: Releases
 Slug: smithay-v-0-3
-Authors: Victor Berger
+Authors: Elinor Berger
 Summary: Announcement of version 0.3 of Smithay, with many improvements and changes since the previous version.
 
 I am proud to finally announce the release of version 0.3 of [Smithay]!

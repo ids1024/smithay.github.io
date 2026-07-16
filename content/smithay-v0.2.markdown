@@ -2,7 +2,7 @@ Title: Version 0.2 of Smithay
 Date: 2018-12-28 17:00
 Category: Releases
 Slug: smithay-v-0-2
-Authors: Victor Berger
+Authors: Elinor Berger
 Summary: Announcement of version 0.2 of smithay, now providing the fundamentals of a wayland compositor.
 
 I am happy to announce the 0.2 release of [smithay](https://crates.io/crates/smithay). Smithay is a library
