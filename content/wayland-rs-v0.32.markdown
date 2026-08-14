@@ -3,7 +3,7 @@ Date: 2026-07-17 00:00
 Category: Releases
 Slug: wayland-rs-v-0-32
 Authors: Ian Douglas Scott
-Summary:
+Summary: Announcement of v0.32 of wayland-rs, with improvments to protocol delegation and enums.
 
 <!--
 TODO
@@ -43,6 +43,27 @@ impl GlobalListHandler for State {}
 It should not be necessary to have `wayland-sys` or `wayland-backend` as a direct dependency. `wayland-sys` may now be updated in the future without a semver bump to the crates depending on it.
 
 As a minor bonus, `wayland-sys` is no longer a dependency when the `system` backend isn't enabled.
+
+### Enum bindings without `WEnum`
+
+Previously, generated protocol beings in wayland-rs defined an `enum` for wayland enums. It was only possible to send a variant of the enum, while variants that were received were wrapped in the `WEnum` type:
+
+```rust
+pub enum WEnum<T> {
+    Value(T),
+    Unknown(u32),
+}
+```
+
+This makes it possible to send an enum value not defined in the protocol (which generally isn't necessary, but is techically valid with things like `wl_shm::format`), but more noticably just cleans up the uses of `WEnum` in matching code.
+
+<!--
+describe what WEnum was
+link RFC
+https://github.com/rust-lang/rfcs/pull/3894
+link wayland propose
+in future version, ideally we'll use closed attribute in wayland spec and open variant
+-->
 
 <!--
 Discuss:
