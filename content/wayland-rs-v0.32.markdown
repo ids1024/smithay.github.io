@@ -1,5 +1,5 @@
 Title: Version 0.32 of Wayland-rs
-Date: 2026-07-17 00:00
+Date: 2026-08-17 00:00
 Category: Releases
 Slug: wayland-rs-v-0-32
 Authors: Ian Douglas Scott
@@ -15,10 +15,56 @@ Version 0.32 of the `wayland-client` and `wayland-server` crates (along with new
 
 This is the first breaking update in a few years. The largest change is to finally improve the `Dispatch`/`GlobalDispatch` traits to no longer require complicated `delegate_*!` trait definitions to delegate implementations to a library like `smithay` or `smithay-client-toolkit`.
 
+### `Dispatch` and `GlobalDispatch`
+
+Previously, a client wanting to dispatch events on a `wl_keyboard` for the application state type `State` with an object udata of `KeyboardData` would use:
+
 ```rust
-fn main() {
+struct State {
+    // ...
+}
+
+struct KeyboardData;
+
+impl Dispatch<wl_keyboard::WlKeyboard, KeyboardData> for State {
+    fn event(
+        state: &mut Self,
+        _: &wl_keyboard::WlKeyboard,
+        event: wl_keyboard::Event,
+        _: &KeyboardData,
+        _: &Connection,
+        _: &QueueHandle<Self>,
+    ) {
+        // ...
+    }
 }
 ```
+
+In the new release, all code like this needs to be changed have the object user data as the `self` type:
+
+```rust
+impl Dispatch<wl_keyboard::WlKeyboard, State> for KeyboardData {
+    fn event(
+        &self,
+        state: &mut State,
+        _: &wl_keyboard::WlKeyboard,
+        event: wl_keyboard::Event,
+        _: &Connection,
+        _: &QueueHandle<State>,
+    ) {
+        // ...
+    }
+}
+```
+
+This is annoying to update, but *slightly* neater, since `&self` can be used instead of naming the udata type again.
+
+What is more important is that this allows crates like `smithay` (for servers using `wayland-server`) and `smithay-client-toolkit` (for clients using `wayland-clients`) to provide generic implementations for any `State` type, for a given udata type defined by the same crate.
+
+<!--
+show how trait bounds are imporved
+error messages
+-->
 
 ### wayland-client `GlobalList` API
 
@@ -30,7 +76,7 @@ The `GlobalList` should also be used for dynamically added globals. `GlobalList:
 
 For clients using `smithay-client-toolkit`, these changes allow `GlobalList`/`GlobalListHandler` to replace `RegistryState` and `ProvidesRegistryState` that previously existed there.
 
-<!-- default impl -->
+Unlike `Dispatch` this provides a default impl, so users who don't need any dynamic globals can simply write:
 
 ```rust
 impl GlobalListHandler for State {}
