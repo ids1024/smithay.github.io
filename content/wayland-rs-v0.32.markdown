@@ -103,6 +103,8 @@ pub enum WEnum<T> {
 
 This makes it possible to send an enum value not defined in the protocol (which generally isn't necessary, but is techically valid with things like `wl_shm::format`), but more noticably just cleans up the uses of `WEnum` in matching code.
 
+This seems to be the best solution for now, though hopefully eventually [Rust will natively support open enums](https://github.com/rust-lang/rfcs/pull/3894), and [Wayland protcol specs could explicitly indicate if the enums should be open](https://gitlab.freedesktop.org/wayland/wayland/-/work_items/497).
+
 <!--
 describe what WEnum was
 link RFC
