@@ -137,3 +137,9 @@ registry_queue_init
 
 link changelogs
 -->
+
+### `smithay-client-toolkit` 0.22
+
+<!--
+show what is removed
+-->
