@@ -1,5 +1,5 @@
 Title: Version 0.32 of Wayland-rs
-Date: 2026-09-11 00:00
+Date: 2026-09-25 00:00
 Category: Releases
 Slug: wayland-rs-v-0-32
 Authors: Ian Douglas Scott
@@ -177,7 +177,15 @@ Previously, smithay-client-toolkit's `RegistryState` partly duplicated the funct
 Binding globals should be done through `GlobalList`. In the future, this will be needed to ensure a client doesn't try to bind a global after `wl_registry::ack_global_remove` has been sent by the compositor.
 
 <!--
+example of what macros used to look like?
+
 show what is removed
 
 link PRs
+https://github.com/Smithay/smithay/pull/2017
+https://github.com/Smithay/client-toolkit/pull/525
+
+earlier PRs with Dispatch2
+https://github.com/Smithay/client-toolkit/pull/519
+https://github.com/Smithay/smithay/pull/2008
 -->
