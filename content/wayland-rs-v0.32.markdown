@@ -19,6 +19,12 @@ This is the first breaking update in a few years. The largest change is to final
 
 `wayland-rs` provides Rust libraries for [Wayland](https://wayland.freedesktop.org) servers and clients, with both a pure Rust implementation (using *almost* no unsafe code) and a wrapper around the C libraries. It aims to provide as idomatic an API as possible within the constraints of what is possible while using the C library a backend (which is needed in clients that need interoperability with things like EGL and Vulkan).
 
+<!--
+context that this is important part of Rust/linux graphics ecosystem? used in winit.
+-->
+
+The rest of this post will probably not make sense if you aren't already familiar with wayland-rs.
+
 ### `Dispatch` and `GlobalDispatch`
 
 Previously, a client wanting to dispatch events on a `wl_keyboard` for the application state type `State` with an object udata of `KeyboardData` would use:
@@ -143,6 +149,10 @@ link changelogs
 -->
 
 ### `smithay-client-toolkit` 0.22
+
+Previously, smithay-client-toolkit's `RegistryState` partly duplicated the functionality `wayland_client::GlobalList`. It can now be removed.
+
+Binding globals should be done through `GlobalList`. In the future, this will be needed to ensure a client doesn't try to bind a global after `wl_registry::ack_global_remove` has been sent by the compositor.
 
 <!--
 show what is removed
