@@ -15,6 +15,10 @@ Version 0.32 of the `wayland-client` and `wayland-server` crates (along with new
 
 This is the first breaking update in a few years. The largest change is to finally improve the `Dispatch`/`GlobalDispatch` traits to no longer require complicated `delegate_*!` trait definitions to delegate implementations to a library like `smithay` or `smithay-client-toolkit`.
 
+### Background
+
+`wayland-rs` provides Rust libraries for [Wayland](https://wayland.freedesktop.org) servers and clients, with both a pure Rust implementation (using *almost* no unsafe code) and a wrapper around the C libraries. It aims to provide as idomatic an API as possible within the constraints of what is possible while using the C library a backend (which is needed in clients that need interoperability with things like EGL and Vulkan).
+
 ### `Dispatch` and `GlobalDispatch`
 
 Previously, a client wanting to dispatch events on a `wl_keyboard` for the application state type `State` with an object udata of `KeyboardData` would use:
