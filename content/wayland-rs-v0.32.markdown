@@ -112,12 +112,34 @@ As a minor bonus, `wayland-sys` is no longer a dependency when the `system` back
 
 ### Enum bindings without `WEnum`
 
-Previously, generated protocol beings in wayland-rs defined an `enum` for wayland enums. It was only possible to send a variant of the enum, while variants that were received were wrapped in the `WEnum` type:
+Previously, generated protocol beings in wayland-rs defined an `enum` for wayland enums. It was only possible to send a variant of the enum, while variants that were received were wrapped in the `WEnum` type, for instance `WEnum<wl_shm::Format>`:
 
 ```rust
 pub enum WEnum<T> {
     Value(T),
     Unknown(u32),
+}
+```
+
+```rust
+#[repr(u32)]
+#[non_exhaustive]
+pub enum Format {
+    Argb8888 = 0,
+    Xrgb8888 = 1,
+    // ...
+}
+```
+
+Now instead of generating an `enum` that is wrapped with `WEnum`, it generates a tuple struct with associated constants:
+
+```rust
+pub struct Format(pub u32);
+
+impl Format {
+    pub const Argb8888: Self = Self(0);
+    pub const Xrgb8888: Self = Self(1);
+    // ...
 }
 ```
 
